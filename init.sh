@@ -65,6 +65,6 @@ docker create --name sonarr -p 8989:8989 -e PUID="$PUID" -e PGID="$PGID" -e TZ="
 docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.4 linuxserver/nzbget
 
 docker start plex
-docker start couchpotato
+docker start radarr
 docker start sonarr
 docker start nzbget

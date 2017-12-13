@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "removing containers"
-docker rm -f plex sonarr couchpotato nzbget
+docker rm -f plex radarr sonarr nzbget
 
 echo "removing local images for containers"
-docker image rm linuxserver/plex linuxserver/couchpotato linuxserver/sonarr linuxserver/nzbget
+docker image rm linuxserver/plex linuxserver/radarr linuxserver/sonarr linuxserver/nzbget
