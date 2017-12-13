@@ -1,6 +1,6 @@
-## pcsn-stack
+## prsn-stack
 
-This repository contains scripts that will download, install and configure PlexMediaServer, CouchPotato, Sonarr and NZBGet using LinuxServer.io's Docker images.
+This repository contains scripts that will download, install and configure PlexMediaServer, Radarr, Sonarr and NZBGet using LinuxServer.io's Docker images.
 
 ### Requirements:
 
@@ -12,10 +12,10 @@ This repository contains scripts that will download, install and configure PlexM
 ### Installation:
 
 Clone this repository:
-`git clone https://github.com/heywoodlh/pcsn-stack.git`
+`git clone https://github.com/heywoodlh/prsn-stack.git`
 
 Change directories:
-`cd pcsn-stack`
+`cd prsn-stack`
 
 #### Configure the init script: 
 Open the init.sh script in a text editor. 
@@ -38,7 +38,7 @@ Run the init script:
 
 The Plex Server will be running on port 32400 of the local machine and will be accessible at: http://127.0.0.1:32400/web
 
-CouchPotato will be accessible at: http://127.0.0.1:5050
+Radarr will be accessible at: http://127.0.0.1:7878
 
 Sonarr will be accessible at: http://127.0.0.1:8989
 
@@ -47,15 +47,23 @@ NZBGet will be accessible at: http://127.0.0.1:6789
 
 ### Docker NAT
 
-A Docker network called pcsnstack is created in which all the containers will be able to use to communicate with one another. 
+A Docker network called prsnstack is created in which all the containers will be able to use to communicate with one another. 
 
-CouchPotato is on 172.0.0.2
+Radarr is on 172.18.0.2
 
-Sonarr is on 172.0.0.3
+Sonarr is on 172.18.0.3
 
-NZBGet is on 172.0.0.4
+NZBGet is on 172.18.0.4
 
-In order to configure CP, Sonarr or NZBGet to connect to one another these NAT IP addresses will need to be used.
+In order to configure Radarr, Sonarr or NZBGet to connect to one another use the service name and port to connect (i.e. nzbget:6789). Because the containers are on the same network the hostname of the container will resolve to the internal IP address.
+
+Thus:
+
+radarr => 172.18.0.2
+
+sonarr => 172.18.0.3
+
+nzbget => 172.18.0.4
 
 
 ### Uninstalling:
