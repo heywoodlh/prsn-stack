@@ -45,6 +45,18 @@ Sonarr will be accessible at: http://127.0.0.1:8989
 NZBGet will be accessible at: http://127.0.0.1:6789
 
 
+### Docker NAT
+
+A Docker network called pcsnstack is created in which all the containers will be able to use to communicate with one another. 
+
+CouchPotato is on 172.0.0.2
+
+Sonarr is on 172.0.0.3
+
+NZBGet is on 172.0.0.4
+
+In order to configure CP, Sonarr or NZBGet to connect to one another these NAT IP addresses will need to be used.
+
 
 ### Uninstalling:
 
