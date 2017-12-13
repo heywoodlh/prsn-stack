@@ -47,7 +47,7 @@ cd ../
 
 ##docker-couchpotato build steps
 cd ./docker-couchpotato
-docker create --name=couchpotato -v "$COUCHPOTATO_DIR":/config -v "$COUCHPOTATO_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e PGID="$PGID" -e PUID="$PUID"  -e TZ="$TZ" -p 5050:5050 linuxserver/couchpotato
+docker create --name=couchpotato -v "$COUCHPOTATO_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e PGID="$PGID" -e PUID="$PUID"  -e TZ="$TZ" -p 5050:5050 linuxserver/couchpotato
 cd ../
 
 ##docker-sonarr build steps
