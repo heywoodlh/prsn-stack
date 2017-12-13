@@ -22,6 +22,8 @@ SONARR_DIR='Sonarr'
 #NZBGet Variables
 NZBGET_DIR='NZBGet'
 
+mkdir "$MOVIE_DIR" "$TV_SHOWS" "$NZB_DOWNLOADS_DIR" "$PLEX_DIR" "$COUCHPOTATO_DIR" "$SONARR_DIR" "$NZBGET_DIR"
+
 if [[ "$PGID" == '' ]]
 then 
 	echo "Please set PGID Variable in $0"
