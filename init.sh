@@ -3,10 +3,10 @@
 #SET THESE VARIABLES!!!
 
 ##Timezone Region/City view https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for list of Timezones
-TZ='America/Boise'
+TZ='Europe/London'
 ##Docker User GID/UID -- Get this by running `id <dockeruser>`
-PGID='1000'
-PUID='1000'
+PGID=''
+PUID=''
 
 
 #OPTIONAL VARIABLES TO SET -- LEAVE THEM ALONE IF YOU AREN'T SURE
