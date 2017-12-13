@@ -3,10 +3,10 @@
 #SET THESE VARIABLES!!!
 
 ##Timezone Region/City view https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for list of Timezones
-TZ='Europe/London'
+TZ='America/Boise'
 ##Docker User GID/UID -- Get this by running `id <dockeruser>`
-PGID=''
-PUID=''
+PGID='1000'
+PUID='1000'
 
 
 #OPTIONAL VARIABLES TO SET -- LEAVE THEM ALONE IF YOU AREN'T SURE
@@ -21,7 +21,7 @@ NZB_DOWNLOADS_DIR="$STACK_DIR/Downloads"
 PLEX_DIR="$STACK_DIR/PlexMediaServer"
 
 #CouchPotato Variables
-RADARR_DIR="$STACK_DIR/CouchPotato"
+RADARR_DIR="$STACK_DIR/Radarr"
 
 #Sonarr Variables
 SONARR_DIR="$STACK_DIR/Sonarr"
