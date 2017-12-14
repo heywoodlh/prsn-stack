@@ -56,10 +56,10 @@ docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 prsn
 docker create --name=plex --net=host -e VERSION=latest -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$PLEX_DIR":/config -v "$TV_SHOWS":/data/tvshows -v "$MOVIE_DIR":/data/movies linuxserver/plex
 
 ##docker-radarr build steps
-docker create --name=radarr -v "$SONARR_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e TZ="$TZ" -e PGID="$PGID" -e PUID="$PUID" -p 7878:7878 --net prsnstack --ip 172.18.0.2 linuxserver/radarr
+docker create --name=radarr -v "$RADARR_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e TZ="$TZ" -e PGID="$PGID" -e PUID="$PUID" -p 7878:7878 --net prsnstack --ip 172.18.0.2 linuxserver/radarr
 
 ##docker-sonarr build steps
-docker create --name sonarr -p 8989:8989 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$SONARR_DIR":/config -v "$TV_SHOWS":/tv -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.3 linuxserver/sonarr
+docker create --name sonarr -p 9090:9090 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$SONARR_DIR":/config -v "$TV_SHOWS":/tv -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.3 linuxserver/sonarr
 
 ##docker-nzbget build steps
 docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.4 linuxserver/nzbget
