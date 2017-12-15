@@ -79,11 +79,11 @@ Use the `prsn-manage.sh` script to start or stop the stack:
 $ ./prsn-manage.sh
 
 Usage: prsn-manage.sh [OPTION] -- psrn-stack cli management script
-
 FlAGS:
     --help - show this help text
     start - start the prsn-stack
     stop - stop the prsn-stack
+    update - update the prsn-stack containers
 ```
 
 
