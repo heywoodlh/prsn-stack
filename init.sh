@@ -49,6 +49,17 @@ then
 	exit 1
 fi
 
+
+echo "TZ=$TZ" >> var.txt
+echo "PGID=$PGID" >> var.txt
+echo "PUID=$PUID" >> var.txt
+echo "TV_SHOWS=$TV_SHOWS" >> var.txt
+echo "NZB_DOWNLOADS_DIR=$NZB_DOWNLOADS_DIR" >> var.txt
+echo "PLEX_DIR=$PLEX_DIR" >> var.txt
+echo "RADARR_DIR=$RADARR_DIR" >> var.txt
+echo "SONARR_DIR=$SONARR_DIR" >> var.txt
+echo "NZBGET_DIR=$NZBGET_DIR" >> var.txt
+
 ##Create docker network
 docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 prsnstack
 
