@@ -34,7 +34,7 @@ Run the init script:
 `./init.sh`
 
 
-### Ports
+### Ports:
 
 The Plex Server will be running on port 32400 of the local machine and will be accessible at: http://127.0.0.1:32400/web
 
@@ -45,7 +45,7 @@ Sonarr will be accessible at: http://127.0.0.1:8989
 NZBGet will be accessible at: http://127.0.0.1:6789
 
 
-### Docker NAT
+### Docker NAT:
 
 A Docker network called prsnstack is created in which all the containers will be able to use to communicate with one another. 
 
@@ -69,6 +69,18 @@ sonarr => 172.18.0.4
 
 nzbget => 172.18.0.5
 
+
+### Manage the Stack:
+
+Use the `prsn-manage.sh` script to start or stop the stack:
+
+
+`$ ./prsn-manage.sh
+Usage: prsn-manage.sh [OPTION] -- psrn-stack cli management script
+FlAGS:
+    --help - show this help text
+    start - start the prsn-stack
+    stop - stop the prsn-stack`
 
 ### Uninstalling:
 
