@@ -75,7 +75,8 @@ nzbget => 172.18.0.5
 Use the `prsn-manage.sh` script to start or stop the stack:
 
 
-```$ ./prsn-manage.sh
+```
+$ ./prsn-manage.sh
 
 Usage: prsn-manage.sh [OPTION] -- psrn-stack cli management script
 
