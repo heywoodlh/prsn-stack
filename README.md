@@ -87,6 +87,93 @@ FlAGS:
 ```
 
 
+### Connect Services to Each Other:
+
+Plex, Radarr, Sonarr and NZBGet will share multiple folders that will be created in the repository folder: 
+
+./TV-Shows - Where TV shows will be downloaded
+
+./Movies - Where movies will be downloaded
+
+./Downloads - Where captured NZB files will be stored
+
+#### 1. Configure NZBGet:
+
+Log in to http://127.0.0.1:6789:
+
+A prompt for NZBGet's username and password will appear. The default username is 'nzbget' and the default password is 'tegbzn6789'. 
+
+
+Change the username and password:
+
+Go to Settings > Security and change the 'Control Username' and 'Control Password' to whatever you would like. Scroll to the bottom of the page and press 'Save'. Reload NZBGet when it prompts to do so.
+
+
+Configure your News Servers, RSS Feeds or other settings: 
+
+Go into Settings and add the information for your News Servers, RSS Feeds, or other settings.
+
+#### 2. Configure Radarr:
+
+Log in to http://127.0.0.1:7878
+
+
+Change the Username and Password:
+
+Go to Settings > General > Security. Under 'Authentication', 'None' will be the default value. Recommended change would be to 'Forms (Login Page)'. Enter in a new username and password that will be used to login. 
+
+
+Connect to NZBGet:
+
+Go to Settings > Download Client and click the large plus icon. Select NZBGet as your download client. Under Name type in "NZBGet". Change the value of "Host" to equal 'nzbget'. Change the username and password to reflect the username and password setup when configuring NZBGet. Press 'Test' to test your connection and then 'Save' if the test is successful.
+
+
+Connect to Indexers: 
+
+Go to Settings > Indexers to connect to whatever indexers you would like to use for downloading content.
+
+
+Downloading content:
+
+When adding a movie for the first time, you will need to set the 'Path' that it will download to. When adding the movie there will be an option for 'Path' that will say nothing. Press on that option and then select 'Add a different path'. Click the blue folder icon to browse the filesystem. Find the folder called movies and put select that. Now NZBGet will download movies from Radarr to that folder.
+
+
+#### 3. Configure Sonarr:
+
+Log in to http://127.0.0.1:8989
+
+
+Change the Username and Password:
+
+Go to Settings > General > Security. Under 'Authentication', 'None' will be the default value. Recommended change would be to 'Forms (Login Page)'. Enter in a new username and password that will be used to login. 
+
+
+Connect to NZBGet:
+
+OF note when connecting Sonarr to NZBGet: The steps are exactly the same as Radarr except for changing the category to 'Series' rather than the default.
+
+Go to Settings > Download Client and click the large plus icon. Select NZBGet as your download client. Under Name type in "NZBGet". Change the value of "Host" to equal 'nzbget'. Change the username and password to reflect the username and password setup when configuring NZBGet. Press 'Test' to test your connection and then 'Save' if the test is successful.
+
+
+Connect to Indexers: 
+
+Go to Settings > Indexers to connect to whatever indexers you would like to use for downloading content.
+
+
+Downloading content:
+
+When adding a TV Show for the first time, you will need to set the 'Path' that it will download to. When adding the TV Show there will be an option for 'Path' that will say nothing. Press on that option and then select 'Add a different path'. Click the blue folder icon to browse the filesystem. Find the folder called 'tv' and put select that. Now NZBGet will download TV Shows from Sonarr to that folder.
+
+
+
+#### 4. Configure Plex:
+
+Log in to http://127.0.0.1:32400/web to log in to Plex. Follow the steps that Plex prompts with in order to login to your Plex account.
+
+When adding a Plex library, add the 'Movies' directory as your movie folder, and the 'TV-Shows' directory for TV-Shows.
+
+
+
 ### Uninstalling:
 
 Run the uninstall.sh script:
