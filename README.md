@@ -113,6 +113,13 @@ Configure your News Servers, RSS Feeds or other settings:
 
 Go into Settings and add the information for your News Servers, RSS Feeds, or other settings.
 
+
+##### Configure categories:
+
+The movies category path should be `/movies`.
+
+The TV-show category path should be `/tvshows`.
+
 #### 2. Configure Radarr:
 
 Log in to http://127.0.0.1:7878
