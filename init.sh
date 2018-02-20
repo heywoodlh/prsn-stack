@@ -3,7 +3,7 @@
 #SET THESE VARIABLES!!!
 
 ##Timezone Region/City view https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for list of Timezones
-TZ='Europe/London'
+TZ='America/Denver'
 ##Docker User GID/UID -- Get this by running `id <dockeruser>`
 PGID=''
 PUID=''
@@ -29,7 +29,7 @@ SONARR_DIR="$STACK_DIR/Sonarr"
 #NZBGet Variables
 NZBGET_DIR="$STACK_DIR/NZBGet"
 
-mkdir "$MOVIE_DIR" "$TV_SHOWS" "$NZB_DOWNLOADS_DIR" "$PLEX_DIR" "$RADARR_DIR" "$SONARR_DIR" "$NZBGET_DIR" >/dev/null 2>&1
+mkdir "$MOVIE_DIR" "$TV_SHOWS" "$NZB_DOWNLOADS_DIR" "$RADARR_DIR" "$SONARR_DIR" "$NZBGET_DIR" >/dev/null 2>&1
 
 if [[ "$PGID" == '' ]]
 then 
@@ -73,7 +73,7 @@ docker create --name=radarr -v "$RADARR_DIR":/config -v "$NZB_DOWNLOADS_DIR":/do
 docker create --name sonarr -p 0.0.0.0:8989:8989 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$SONARR_DIR":/config -v "$TV_SHOWS":/tv -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.4 linuxserver/sonarr
 
 ##docker-nzbget build steps
-docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.5 linuxserver/nzbget
+docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$TV_SHOWS":/tvshows -v "$MOVIE_DIR":/movies --net prsnstack --ip 172.18.0.5 linuxserver/nzbget
 
 docker start plex
 docker start radarr
