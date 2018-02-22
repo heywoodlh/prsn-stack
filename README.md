@@ -180,6 +180,23 @@ Log in to http://127.0.0.1:32400/web to log in to Plex. Follow the steps that Pl
 When adding a Plex library, add the 'Movies' directory as your movie folder, and the 'TV-Shows' directory for TV-Shows.
 
 
+#### 5. Start PRSN-stack as a Systemd Service:
+
+Edit the sample systemd service in `./lib/prsn-stack.service` and change the `User=myuser` to the user that set up the docker containers.
+
+Copy `./lib/prsn-stack.service` to `/etc/systemd/system/prsn-stack.service`:
+
+`sudo cp lib/prsn-stack.service /etc/systemd/system/prsn-stack.service`
+
+Then enable the service to start up on boot:
+
+`sudo systemctl enable prsn-stack.service`
+
+If the docker containers are not running, start the service:
+
+`sudo systemctl start prsn-stack.service`
+
+
 
 ### Uninstalling:
 
