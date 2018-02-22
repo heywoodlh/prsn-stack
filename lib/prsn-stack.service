@@ -1,0 +1,13 @@
+[Unit]
+Description=Sonarr
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=myuser
+TimeoutStartSec=0
+Restart=always
+ExecStart=docker start nzbget plex radarr sonarr
+
+[Install]
+WantedBy=multi-user.target
