@@ -2,11 +2,14 @@
 
 This repository contains scripts that will download, install and configure PlexMediaServer, Radarr, Sonarr and NZBGet using LinuxServer.io's Docker images.
 
+
+
 ### Requirements:
 
 1. Docker must be installed (https://docs.docker.com/engine/installation/)
 
 2. A non-root user should be able to use the Docker command (add the user to the Docker group)
+
 
 
 ### Installation:
@@ -16,6 +19,7 @@ Clone this repository:
 
 Change directories:
 `cd prsn-stack`
+
 
 #### Configure the init script: 
 Open the init.sh script in a text editor. 
@@ -87,6 +91,7 @@ FlAGS:
 ```
 
 
+
 ### Connect Services to Each Other:
 
 Plex, Radarr, Sonarr and NZBGet will share multiple folders that will be created in the repository folder: 
@@ -96,6 +101,7 @@ Plex, Radarr, Sonarr and NZBGet will share multiple folders that will be created
 ./Movies - Where movies will be downloaded
 
 ./Downloads - Where captured NZB files will be stored
+
 
 #### 1. Configure NZBGet:
 
@@ -120,6 +126,8 @@ The movies category path should be `/movies`.
 
 The TV-show category path should be `/tvshows`.
 
+
+
 #### 2. Configure Radarr:
 
 Log in to http://127.0.0.1:7878
@@ -143,6 +151,7 @@ Go to Settings > Indexers to connect to whatever indexers you would like to use 
 Downloading content:
 
 When adding a movie for the first time, you will need to set the 'Path' that it will download to. When adding the movie there will be an option for 'Path' that will say nothing. Press on that option and then select 'Add a different path'. Click the blue folder icon to browse the filesystem. Find the folder called movies and put select that. Now NZBGet will download movies from Radarr to that folder.
+
 
 
 #### 3. Configure Sonarr:
@@ -172,7 +181,6 @@ Downloading content:
 When adding a TV Show for the first time, you will need to set the 'Path' that it will download to. When adding the TV Show there will be an option for 'Path' that will say nothing. Press on that option and then select 'Add a different path'. Click the blue folder icon to browse the filesystem. Find the folder called 'tv' and put select that. Now NZBGet will download TV Shows from Sonarr to that folder.
 
 
-
 #### 4. Configure Plex:
 
 Log in to http://127.0.0.1:32400/web to log in to Plex. Follow the steps that Plex prompts with in order to login to your Plex account.
@@ -195,6 +203,7 @@ Then enable the service to start up on boot:
 If the docker containers are not running, start the service:
 
 `sudo systemctl start prsn-stack.service`
+
 
 
 
