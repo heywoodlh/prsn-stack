@@ -74,24 +74,6 @@ sonarr => 172.18.0.4
 nzbget => 172.18.0.5
 
 
-### Manage the Stack:
-
-Use the `prsn-manage.sh` script to start or stop the stack:
-
-
-```
-$ ./prsn-manage.sh
-
-Usage: prsn-manage.sh [OPTION] -- psrn-stack cli management script
-FlAGS:
-    --help - show this help text
-    start - start the prsn-stack
-    stop - stop the prsn-stack
-    update - update the prsn-stack containers
-```
-
-
-
 ### Connect Services to Each Other:
 
 Plex, Radarr, Sonarr and NZBGet will share multiple folders that will be created in the repository folder: 
