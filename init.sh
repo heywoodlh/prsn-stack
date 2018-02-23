@@ -8,6 +8,13 @@ TZ='America/Denver'
 PGID=''
 PUID=''
 
+#Set the below variables to false if there is a specific part of the stack that you would like to omit
+
+DOCKER_PLEX='true'
+DOCKER_NZBGET='true'
+DOCKER_RADARR='true'
+DOCKER_SONARR='true'
+
 
 #OPTIONAL VARIABLES TO SET -- LEAVE THEM ALONE IF YOU AREN'T SURE
 
@@ -28,6 +35,10 @@ SONARR_DIR="$STACK_DIR/Sonarr"
 
 #NZBGet Variables
 NZBGET_DIR="$STACK_DIR/NZBGet"
+
+
+#DO NOT EDIT BELOW THIS LINE
+
 
 mkdir "$MOVIE_DIR" "$TV_SHOWS" "$NZB_DOWNLOADS_DIR" "$RADARR_DIR" "$SONARR_DIR" "$NZBGET_DIR" >/dev/null 2>&1
 
@@ -64,18 +75,31 @@ echo "NZBGET_DIR=$NZBGET_DIR" >> var.txt
 docker network create -d bridge --subnet=172.18.0.0/16 --gateway 172.18.0.1 prsnstack
 
 ##docker-plex build steps
-docker create --name=plex -e VERSION=latest -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$PLEX_DIR":/config -v "$TV_SHOWS":/data/tvshows -v "$MOVIE_DIR":/data/movies --net prsnstack --ip 172.18.0.2 -p 32400:32400 -p 32400:32400/udp -p 32469:32469 -p 32469:32469/udp -p 5353:5353/udp -p 1900:1900/udp linuxserver/plex
+if [[ "$DOCKER_PLEX" == 'true' ]]
+then
+	docker create --name=plex -e VERSION=latest -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$PLEX_DIR":/config -v "$TV_SHOWS":/data/tvshows -v "$MOVIE_DIR":/data/movies --net prsnstack --ip 172.18.0.2 -p 32400:32400 -p 32400:32400/udp -p 32469:32469 -p 32469:32469/udp -p 5353:5353/udp -p 1900:1900/udp linuxserver/plex
+	docker start plex
+fi
 
 ##docker-radarr build steps
-docker create --name=radarr -v "$RADARR_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e TZ="$TZ" -e PGID="$PGID" -e PUID="$PUID" -p 7878:7878 --net prsnstack --ip 172.18.0.3 linuxserver/radarr
+
+if [[ "$DOCKER_RADARR" == 'true' ]]
+then
+	docker create --name=radarr -v "$RADARR_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$MOVIE_DIR":/movies -e TZ="$TZ" -e PGID="$PGID" -e PUID="$PUID" -p 7878:7878 --net prsnstack --ip 172.18.0.3 linuxserver/radarr
+	docker start radarr
+fi
 
 ##docker-sonarr build steps
-docker create --name sonarr -p 0.0.0.0:8989:8989 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$SONARR_DIR":/config -v "$TV_SHOWS":/tv -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.4 linuxserver/sonarr
+
+if [[ "$DOCKER_SONARR" == 'true' ]]
+then
+	docker create --name sonarr -p 0.0.0.0:8989:8989 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$SONARR_DIR":/config -v "$TV_SHOWS":/tv -v "$NZB_DOWNLOADS_DIR":/downloads --net prsnstack --ip 172.18.0.4 linuxserver/sonarr
+	docker start sonarr
+fi
 
 ##docker-nzbget build steps
-docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$TV_SHOWS":/tvshows -v "$MOVIE_DIR":/movies --net prsnstack --ip 172.18.0.5 linuxserver/nzbget
-
-docker start plex
-docker start radarr
-docker start sonarr
-docker start nzbget
+if [[ "$DOCKER_NZBGET" == 'true' ]]
+then
+	docker create --name nzbget -p 6789:6789 -e PUID="$PUID" -e PGID="$PGID" -e TZ="$TZ" -v "$NZBGET_DIR":/config -v "$NZB_DOWNLOADS_DIR":/downloads -v "$TV_SHOWS":/tvshows -v "$MOVIE_DIR":/movies --net prsnstack --ip 172.18.0.5 linuxserver/nzbget
+	docker start nzbget
+fi
