@@ -53,25 +53,25 @@ NZBGet will be accessible at: http://127.0.0.1:6789
 
 A Docker network called prsnstack is created in which all the containers will be able to use to communicate with one another. 
 
-Plex is on 172.18.0.2
+Plex is on 172.50.0.2
 
-Radarr is on 172.18.0.3
+Radarr is on 172.50.0.3
 
-Sonarr is on 172.18.0.4
+Sonarr is on 172.50.0.4
 
-NZBGet is on 172.18.0.5
+NZBGet is on 172.50.0.5
 
 In order to configure Radarr, Sonarr or NZBGet to connect to one another use the service name and port to connect (i.e. nzbget:6789). Because the containers are on the same network the hostname of the container will resolve to the internal IP address.
 
 Thus:
 
-plex => 172.18.0.2
+plex => 172.50.0.2
 
-radarr => 172.18.0.3
+radarr => 172.50.0.3
 
-sonarr => 172.18.0.4
+sonarr => 172.50.0.4
 
-nzbget => 172.18.0.5
+nzbget => 172.50.0.5
 
 
 ### Connect Services to Each Other:
