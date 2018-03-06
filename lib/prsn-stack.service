@@ -3,7 +3,7 @@ Description=PRSN-Stack
 After=docker.service
 
 [Service]
-User=heywoodlh
+User=myuser
 ExecStart=/usr/bin/docker start plex nzbget radarr sonarr
 
 [Install]
