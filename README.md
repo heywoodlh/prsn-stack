@@ -6,10 +6,17 @@ This repository contains scripts that will download, install and configure PlexM
 
 ### Requirements:
 
-1. Docker must be installed (https://docs.docker.com/engine/installation/)
+1. Docker must be installed
 
 2. A non-root user should be able to use the Docker command (add the user to the Docker group)
 
+Install Docker and add the user to the docker group by using these commands on Ubuntu:
+`sudo apt-get update; sudo apt-get install docker.io; sudo usermod -aG docker "$USER"`
+
+Log out then back in to make sure that your user can run the docker command without permissions issues:
+`docker ps`
+
+Or you can follow Docker's instructions: (https://docs.docker.com/engine/installation/)
 
 
 ### Installation:
