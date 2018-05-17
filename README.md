@@ -194,9 +194,20 @@ If the docker containers are not running, start the service:
 `sudo systemctl start prsn-stack.service`
 
 
+### Upgrade:
+
+Run `uninstall.sh` and then re-run `init.sh`:
+`./uninstall.sh`
+`./init.sh`
+
+Since the Docker containers store their configuration on the host they are on, destroying the containers shouldn't be a problem. Once `init.sh` has run again the containers will reuse whatever configuration was being used before. The only time they will not re-use the same configuration would be if you deleted the directories for each container.
+
 
 
 ### Uninstalling:
 
 Run the uninstall.sh script:
 `./uninstall.sh`
+
+Remove the directories for each container:
+`rm -rf Plex Radarr Sonarr NZBGet`
