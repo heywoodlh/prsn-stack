@@ -40,6 +40,7 @@ PUID is the user ID of the Docker user. This can be found by running `id "$USER"
 TZ is the timezone that the Docker containers will use. You can find a list of Unix time zones here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
+*Note: the `init.sh` script doesn't handle relative paths. It is intended to be run where the user's working directory is the same directory it is housed in. That means that you make sure you run the script while you are in the same directory as the script./*
 
 Run the init script:
 `./init.sh`
